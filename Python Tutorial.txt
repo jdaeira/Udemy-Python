@@ -1,0 +1,139 @@
+3 sets of """ or ''' will fix a broken string that is long
+import random: is to import the random method
+format is to format a string
+type(x): checks to see what type x is: ie string, int, float, list etc
+casting a string to int: int("34")
+
+String Methods (Can't be changed after they are created)
+x = "Happy Birthday"
+x.lower(): to get the lower case of a string
+x.upper(): to get the upper case of a string
+x.capitalize(): to capitalize the first letter of the sentence
+x.title(): to capitalize the first letter of every work
+x.islower(): checks to see if a word is lower case
+x.isupper(): checks to see if a word is upper case
+x.istitle(): checks to see if every word is capitalized
+x.isalpha(): checks to see if a word contains all letters
+x.isdigit(): checks to see if a work contains all digits
+y = "happybirthday123"
+y.isalnum(): checks to see if a word contains letters and numbers
+
+x = "happy birthday"
+x.index("birthday"): find out where the word starts: it would be 6 in this case
+                     will give a hard error if not found   
+x.find("birthday"): find out where the work starts: it would be 6 in this case as well
+                    will give the value of "-1" if not found
+
+y = "000000happybirthday000000"
+y.strip("0"): will remove all the 0's from both sides of the string   
+y.lstrip("0"): will remove all the 0's on the left side of the string
+y.rstrip("0"): will remove all the 0's on the right side of the string
+len(y): will give the length of characters
+name = input("What is your name?: ").strip()
+strip(): will strip out all of the spaces
+
+Slices
+word = "superfly"
+word[start:end:step]
+word[0:5:1] : to get superfly
+word[5:8:1] or word[5:] to get fly
+word[-1] starts from the end
+word[word.index("super"):word.index("fly")]
+word[::-1] prints a word backwards
+
+Lists (Can be changed after they are created)
+jackson = ["A","B","C",1,2,3,"Do","Rey","Me",True, False]
+jackson[4] is 2
+jackson[7] 'Rey'
+jackson[-2] is True 
+jackson[start:end:step]
+letter = jackson[0:3:1]
+letter = ["A","B","C"]
+our_list = [1,2,[3,4,5],6,7,8]
+our_list[2] is [3, 4, 5]
+del our_list[0] = removes the number 1
+jackson.append(2) = adds to the list
+jackson = jackson + [2] = also adds to the list
+A = [5,12,72,55,89]
+A = A + [[5,6,7,8]] = adds as it's own element A = [5, 12, 72, 55, 89, 2, 3, [5, 6, 7, 8]]
+A = [5,12,72,55,89]
+A.insert(2,100) = insert the number 100 at index 2
+A.insert(2,[10,20,30]) = inserts a list at index 2
+
+Tuples (Can't be changed after they are created)
+our_tuple = (1,2,3,"A","B","C")
+(A,B,C) = 1,2,3 : Assigns multiple variables
+
+Dictionaries
+students = {}
+students = {"Alice": 25, "Bob": 27, "Claire": 17, "Dan": 21, "Emma": 22}
+students["Alice"] returns 25
+Alice is the key and 25 is the value
+students["Fred"] = 25 adds another student
+del students["Fred"] deletes the student
+students.keys() : gets the keys
+students.values() : gets the values
+a = list(students.keys())
+>>> a
+['Alice', 'Bob', 'Claire', 'Dan', 'Emma']
+>>> a[0]
+'Alice'
+>>> a[1]
+'Bob'
+list(students.values())[2:]
+[17, 21, 22]
+students.items()
+dict_items([('Alice', 25), ('Bob', 27), ('Claire', 17), ('Dan', 21), ('Emma', 22)])
+list(students.items())[0]
+('Alice', 25)
+a = list(students.items())[0]
+a
+('Alice', 25)
+dictionary.py, students.py, and cinema.py are good examples of dictionaries
+
+List Comprehensions
+even_numbers = [x for x in range(1,101) if x % 2 == 0]
+print(even_numbers)
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40,
+42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78,
+ 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]
+
+words = ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
+answer = [[w.upper(), w.lower(), len(w)] for w in words]
+print(answer)
+[['THE', 'the', 3], ['QUICK', 'quick', 5], ['BROWN', 'brown', 5], ['FOX', 'fox', 3], 
+['JUMPS', 'jumps', 5], ['OVER', 'over', 4], ['THE', 'the', 3], ['LAZY', 'lazy', 4],
+['DOG', 'dog', 3]]
+
+Packing and Unpacking
+# Creates a tuple
+def add(*numbers):
+     total = 0
+     for number in numbers:
+             total = total + number
+     return(total)
+
+>>> add(1,2,3)
+6
+>>> add(1,2,3,4)
+10
+
+# Unpacks a dictionary
+def about(name, age, likes):
+     sentence = "Meet {}! They are {} years old and they like {}".format(name, age, likes)
+     return sentence
+ 
+>>> dictionary = {"name": "Zihad", "age": 23, "likes": "Python"}
+>>> about(**dictionary)
+'Meet Zihad! They are 23 years old and they like Python'
+
+# Creates a dictionary
+def foo(**kwargs):
+     for key, value in kwargs.items():
+             print("{}:{}".format(key, value))
+ 
+>>> foo(huda = "Female", zihad = "Male")
+huda:Female
+zihad:Male
+
+
