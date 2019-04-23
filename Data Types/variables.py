@@ -22,4 +22,5 @@ print(hello_two[::-1])
 
 mystring = "abcdefghijk"
 
-print(mystring[3:6])
+print((mystring[3:6] + " " ) * 10)
+
