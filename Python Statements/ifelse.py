@@ -16,3 +16,4 @@ elif loc == "Store":
     print("Welcome to the Store!")
 else:
     print("I don't know where I am!")
+
