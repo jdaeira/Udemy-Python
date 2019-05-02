@@ -128,9 +128,7 @@ almost_there(150)
 almost_there(209)
 
 LEVEL 2 PROBLEMS
-FIND 33:
-
-Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
+FIND 33: Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
 
 has_33([1, 3, 3]) → True
 has_33([1, 3, 1, 3]) → False
