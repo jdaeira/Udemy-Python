@@ -7,11 +7,51 @@
 # spy_game([1,7,2,0,4,5,0]) --> False
 
 def spy_game(nums):
+    newList = []
+    for index in range(len(nums)):
+        if nums[index] == 0 or nums[index] == 7:
+            newList.append(nums[index])
+    bond = "".join(str(num) for num in newList)
+    if bond == "007":
+        return True
+    else:
+        return False
 
-    pass
+print(spy_game([1,2,4,0,0,7,5]))
 
-spy_game([1,2,4,0,0,7,5])
+print(spy_game([1,0,2,4,0,5,7]))
 
-spy_game([1,0,2,4,0,5,7])
+print(spy_game([1,7,2,0,4,5,0]))
 
-spy_game([1,7,2,0,4,5,0])
+
+
+
+# COUNT PRIMES: Write a function that returns the number of prime numbers 
+# that exist up to and including a given number
+
+# count_primes(100) --> 25
+
+# By convention, 0 and 1 are not prime.
+
+def count_primes(number):
+
+    primes = 0
+
+    for count in range(2,number):
+        if count > 1:
+            for num in range(2, count):
+                if count % num == 0:
+                    break
+            else:
+                primes += 1
+    return primes
+
+
+print(count_primes(100))
+
+
+
+
+        
+        
+
