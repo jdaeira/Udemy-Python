@@ -8,36 +8,36 @@
 # 43π𝑟3
 
 def vol(rad):
+    return (4 * 3.14) * (rad ** 3) / 3
 
-    pass
 
-# Check
+print(vol(2))
 
-vol(2)
-
-33.49333333333333
+# 33.49333333333333
 
 # Write a function that checks whether a number is in a given range (inclusive of high and low)
 
 def ran_check(num,low,high):
-
-    pass
+    if low < num < high:
+        return "{} is in the range between {} and {}".format(num, low, high)
+    else:
+        return "{} in not in the range between {} and {}".format(num, low, high)
+    
 
 # Check
 
-ran_check(5,2,7)
+print(ran_check(5,2,7))
 
-5 is in the range between 2 and 7
+# 5 is in the range between 2 and 7
 
 # If you only wanted to return a boolean:
 
 def ran_bool(num,low,high):
+    return low < num < high    
 
-    pass
+print(ran_bool(3,1,10))
 
-ran_bool(3,1,10)
-
-True
+# True
 
 # Write a Python function that accepts a string and calculates the number of upper case letters and lower case letters.
 
@@ -51,8 +51,18 @@ True
 # If you feel ambitious, explore the Collections module to solve this problem!
 
 def up_low(s):
+    uppers = 0
+    lowers = 0
 
-    pass
+    for letter in s:
+        if letter.isupper():
+            uppers += 1
+        elif letter.islower():
+            lowers += 1
+    
+    print("No. of Upper case characters : " + str(uppers))
+    print("No. of Lower case Characters : " + str(lowers))
+    
 
 s = 'Hello Mr. Rogers, how are you this fine Tuesday?'
 
@@ -69,12 +79,11 @@ up_low(s)
 # Unique List : [1, 2, 3, 4, 5]
 
 def unique_list(lst):
+    return list(set(lst))
 
-    pass
+print(unique_list([1,1,1,1,2,2,3,3,3,3,4,5]))
 
-unique_list([1,1,1,1,2,2,3,3,3,3,4,5])
-
-[1, 2, 3, 4, 5]
+# [1, 2, 3, 4, 5]
 
 
 # Write a Python function to multiply all the numbers in a list.
@@ -83,12 +92,16 @@ unique_list([1,1,1,1,2,2,3,3,3,3,4,5])
 # Expected Output : -24
 
 def multiply(numbers):  
+    total = numbers[0]
+    
+    for num in range(1, len(numbers)):
+        total *= numbers[num]
+    
+    return total
 
-    pass
+print(multiply([1,2,3,-4]))
 
-multiply([1,2,3,-4])
-
--24
+# -24
 
 
 # Write a Python function that checks whether a passed in string is palindrome or not.
@@ -96,13 +109,16 @@ multiply([1,2,3,-4])
 # Note: A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
 
 def palindrome(s):
+    backword = s[::-1]
+    if backword == s:
+        return True
+    else:
+        return False
+    
 
-    pass
+print(palindrome('helleh'))
 
-palindrome('helleh')
-
-True
-
+# True
 
 # Hard:
 
@@ -112,21 +128,30 @@ True
 # For example : "The quick brown fox jumps over the lazy dog"
 
 # Hint: Look at the string module
-
 import string
 
-​
-
 def ispangram(str1, alphabet=string.ascii_lowercase):
+    nospaces = str1.replace(" ", "")
+    letters_in = set()
+    for letter in nospaces.lower():
+        if letter in alphabet:
+            letters_in.add(letter)
 
-    pass
+    sort_letters = sorted(letters_in)
+    new_letters = "".join((str(s) for s in sort_letters))
+    if new_letters == alphabet:
+        return True
+    else:
+        return False
 
-ispangram("The quick brown fox jumps over the lazy dog")
+print(ispangram("The quick brown fox jumps over the lazy dog"))
+print(ispangram("John da Eira"))
 
-True
+# True
 
-string.ascii_lowercase
+# string.ascii_lowercase
 
-'abcdefghijklmnopqrstuvwxyz'
+# 'abcdefghijklmnopqrstuvwxyz'
 
 # Great Job!
+
