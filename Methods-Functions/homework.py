@@ -68,6 +68,7 @@ s = 'Hello Mr. Rogers, how are you this fine Tuesday?'
 
 up_low(s)
 
+
 # Original String :  Hello Mr. Rogers, how are you this fine Tuesday?
 # No. of Upper case characters :  4
 # No. of Lower case Characters :  33
