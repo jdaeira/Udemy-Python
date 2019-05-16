@@ -35,7 +35,35 @@ printBoard()
 board[0][0] = "X"
 board[2][2] = "O"
 board[1][1] = "X"
+board[1][2] = "X"
 
 checkBoard("X", 2)
 
+printBoard()
+
+
+number = False
+count = 1
+
+def checkCount(num):
+    if num == 20:
+        return True
+    else:
+        return False
+
+
+while (number == False):
+    print(count)
+    count += 1
+    number = checkCount(count)
+    
+
+print("Bye")
+
+numX = input("Choose a number for 'X': ")
+checkBoard("X", int(numX))
+printBoard()
+
+numO = input("Choose a number for 'O': ")
+checkBoard("O", int(numO))
 printBoard()
