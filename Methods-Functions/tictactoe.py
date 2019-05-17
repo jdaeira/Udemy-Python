@@ -11,16 +11,14 @@ def printBoard():
         
     print()
 
+
 def checkBoard(choice, number):
-    otherChoice = ""
-    if choice == "X":
-        otherChoice = "O"
-    else: 
-        otherChoice == "X"
+    filled =
     for i in range(3):
         for j in range(3):
-            if board[i][j] == choice or board[i][j] == otherChoice:
-                print("That square has been filled")
+            if board[i][j] == "X" or board[i][j] == "O":
+                filled += 1
+                print(filled)
             elif board[i][j] == number: 
                 board[i][j] = choice
                 print(board)
@@ -42,21 +40,6 @@ checkBoard("X", 2)
 printBoard()
 
 
-number = False
-count = 1
-
-def checkCount(num):
-    if num == 20:
-        return True
-    else:
-        return False
-
-
-while (number == False):
-    print(count)
-    count += 1
-    number = checkCount(count)
-    
 
 print("Bye")
 
