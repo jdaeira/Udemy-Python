@@ -14,7 +14,9 @@ def getInput():
     num1 = int(num1)
     number = correctAnswer(num1)
     if number == False:
+        print("Incorrect number, try again!")
         getInput()  
+        
 
     while (number2 == False):
         num2 = input("Pick another number between 1 and 10: ")
@@ -22,6 +24,8 @@ def getInput():
         number2 = correctAnswer(num2)
         if number2 == True:
             getInput()
+        else:
+            print("Incorrect number, try again!")
         
 
 number = False
@@ -41,6 +45,7 @@ while (number == False):
 
 
 getInput() 
+
 
 
 
