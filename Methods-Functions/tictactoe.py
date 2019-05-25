@@ -1,6 +1,7 @@
 
 board = [[7,8,9], [4,5,6], [1,2,3]]
 
+# Prints the TicTacToe Board
 def printBoard():
     print()
     for i in range(3):
@@ -11,6 +12,8 @@ def printBoard():
         
     print()
 
+# Checks if the input is valid by check if
+# the input is a digit or a character(string)
 def checkInput(num):
     if num.isdigit():
         if int(num) in range(1,10):
@@ -20,6 +23,7 @@ def checkInput(num):
     elif num.isalpha():
         return False
 
+# Checks if number inputed is already in the board
 def checkBoard(choice, number):
     filled = 0
     for i in range(3):
@@ -32,6 +36,7 @@ def checkBoard(choice, number):
     else: 
         return True            
 
+# Checks is there is a Winner or a Draw
 def checkWinOrDraw(player):
     filled = 0
     if (board[0][0] == "X" and board[0][1] == "X" and board[0][2] == "X") \
@@ -63,7 +68,8 @@ def checkWinOrDraw(player):
         print("The game is a DRAW! No Winner!")
         print()
         exit()
-    
+
+# Gets the userinput and runs various checks by calling the above functions    
 def getUserInput():
     filledO = False
     answer0 = False
@@ -95,7 +101,7 @@ def getUserInput():
                 getUserInput()
 
         
-
+# Starts running the program
 print()
 print("*** Welcome to Tic-Tac-Toe ***")
 printBoard()
