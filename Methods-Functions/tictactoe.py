@@ -11,6 +11,14 @@ def printBoard():
         
     print()
 
+def checkInput(num):
+    if num.isdigit():
+        if int(num) in range(1,10):
+            return True
+        else: 
+            return False
+    elif num.isalpha():
+        return False
 
 def checkBoard(choice, number):
     filled = 0
@@ -20,9 +28,9 @@ def checkBoard(choice, number):
                 board[i][j] = choice
                 filled += 1
     if filled == 0:
-        return True
+        return False
     else: 
-        return False             
+        return True            
 
 def checkWinOrDraw(player):
     filled = 0
@@ -56,31 +64,41 @@ def checkWinOrDraw(player):
         print()
         exit()
     
-
 def getUserInput():
-    filledO = True
+    filledO = False
+    answer0 = False
     numX = input("Choose a number for 'X': ")
+    answerX = checkInput(numX)
+    if answerX == False:
+        print("Invalid Input. Try again!")
+        getUserInput()
     filledX = checkBoard("X", int(numX))
-    if filledX == True:
-        print("That square has been taked. Try again")
+    if filledX == False:
+        print("That square has been taken. Try again")
         getUserInput()
     else:   
         checkWinOrDraw("X")
         printBoard()
 
-    while (filledO == True): 
+    while (filledO == False or answer0 == False): 
         numO = input("Choose a number for 'O': ")
-        filledO = checkBoard("O", int(numO))
-        if filledO == True:
-            print("That square has been taked. Try again")
+        answerO = checkInput(numO)
+        if answerO == False:
+            print("Invalid Input. Try again!")
         else:
-            checkWinOrDraw("O")
-            printBoard()
-            getUserInput()
+            filledO = checkBoard("O", int(numO))
+            if filledO == False:
+                print("That square has been taken. Try again")
+            else:
+                checkWinOrDraw("O")
+                printBoard()
+                getUserInput()
+
+        
 
 print()
 print("*** Welcome to Tic-Tac-Toe ***")
 printBoard()
 getUserInput()
 
-# have to check if the input is valid
+
