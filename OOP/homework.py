@@ -29,9 +29,8 @@ coordinate2 = (8,10)
 li = Line(coordinate1,coordinate2)
 
 li.distance()
-9.433981132056603
+
 li.slope()
-1.6
 
 # Fill in the class
 

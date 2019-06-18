@@ -20,8 +20,8 @@ class Account:
     def __init__(self, owner, balance):
         self.owner = owner
         self.balance = balance
-        print("Account Owner: {}".format(self.owner))
-        print("Account Balance: ${}".format(self.balance))
+        #print("Account Owner: {}".format(self.owner))
+        #print("Account Balance: ${}".format(self.balance))
 
     def deposit(self, deposit):
         self.balance += deposit
@@ -39,10 +39,13 @@ class Account:
             print("WITHDRAWEL ACCEPTED")
             print("Your Balance is: ${}".format(self.balance))
 
+    def __str__(self):
+        return f"Account Owner: {self.owner} \nAccount Balance: {self.balance}"
+
 
 # 1. Instantiate the class
 acct1 = Account('John',100)
-
+print(acct1)
 # 2. Print the object
 #print(acct1)
 
