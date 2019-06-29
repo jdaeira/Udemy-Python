@@ -16,10 +16,13 @@ class Deck():
                 self.cardslist.append((suit, face))
         random.shuffle(self.cardslist)
     
-    def get_cards(self):
-        suit, face = self.cardslist[0]
-        del self.cardslist[0]
-        print(f"Your card is a {face} of {suit}")
+    def get_cards(self, amount, hand):
+        for x in range(amount):
+            suit, face = self.cardslist[0]
+            hand.append((suit, face))
+            del self.cardslist[0]
+        return hand
+
 
 cards = Deck()
 cards.shuffle_cards()
@@ -27,15 +30,21 @@ print(cards.cardslist)
 print(len(cards.cardslist))
 print(cards.cardslist[0])
 
-cards.get_cards()
-print(cards.cardslist)
-print(len(cards.cardslist))
+# cards.get_cards()
+# print(cards.cardslist)
+# print(len(cards.cardslist))
 
-cards.get_cards()
-print(cards.cardslist)
-print(len(cards.cardslist))
+# cards.get_cards()
+# print(cards.cardslist)
+# print(len(cards.cardslist))
 
-hand = []
+player_hand = []
+player_hand = cards.get_cards(5, player_hand)
+print(player_hand)
+
+
+player_hand = cards.get_cards(1, player_hand)
+print(player_hand)
 
 
 
