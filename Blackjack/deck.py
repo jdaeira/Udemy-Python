@@ -24,27 +24,27 @@ class Deck():
         return hand
 
 
-cards = Deck()
-cards.shuffle_cards()
-print(cards.cardslist)
-print(len(cards.cardslist))
-print(cards.cardslist[0])
-
-# cards.get_cards()
+# cards = Deck()
+# cards.shuffle_cards()
 # print(cards.cardslist)
 # print(len(cards.cardslist))
+# print(cards.cardslist[0])
 
-# cards.get_cards()
-# print(cards.cardslist)
-# print(len(cards.cardslist))
+# # cards.get_cards()
+# # print(cards.cardslist)
+# # print(len(cards.cardslist))
 
-player_hand = []
-player_hand = cards.get_cards(5, player_hand)
-print(player_hand)
+# # cards.get_cards()
+# # print(cards.cardslist)
+# # print(len(cards.cardslist))
+
+# player_hand = []
+# player_hand = cards.get_cards(5, player_hand)
+# print(player_hand)
 
 
-player_hand = cards.get_cards(1, player_hand)
-print(player_hand)
+# player_hand = cards.get_cards(1, player_hand)
+# print(player_hand)
 
 
 
