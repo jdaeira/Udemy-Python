@@ -1,7 +1,7 @@
 
 from deck import Deck
 
-class Player():
+class Dealer():
     
     def __init__(self):
         self.hand = []

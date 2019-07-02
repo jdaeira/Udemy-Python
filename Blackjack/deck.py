@@ -8,7 +8,7 @@ class Deck():
         self.cardslist = []
         self.suits = ("Hearts", "Diamonds", "Spades", "Clubs")
         self.faces = ("Two", "Three", "Four", "Five", "Six", "Seven", "Eight", \
-         "Nine", "Ten", "Jack", "Queen", "King", "Ace")
+                      "Nine", "Ten", "Jack", "Queen", "King", "Ace")
 
     def shuffle_cards(self):
         for suit in self.suits:
@@ -24,27 +24,7 @@ class Deck():
         return hand
 
 
-# cards = Deck()
-# cards.shuffle_cards()
-# print(cards.cardslist)
-# print(len(cards.cardslist))
-# print(cards.cardslist[0])
 
-# # cards.get_cards()
-# # print(cards.cardslist)
-# # print(len(cards.cardslist))
-
-# # cards.get_cards()
-# # print(cards.cardslist)
-# # print(len(cards.cardslist))
-
-# player_hand = []
-# player_hand = cards.get_cards(5, player_hand)
-# print(player_hand)
-
-
-# player_hand = cards.get_cards(1, player_hand)
-# print(player_hand)
 
 
 
