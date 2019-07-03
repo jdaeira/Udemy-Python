@@ -14,3 +14,10 @@ class Player():
         for _,b in self.hand:
             score += self.deck_value[b]
         return score
+
+    def print_hand(self):
+        print("* Players Cards *")
+        for suit, face in self.hand:
+            print(f"*  {face}  of  {suit}  *")
+            #print(f"*  {face}  of  {suit}  *", end=" ")
+        print()

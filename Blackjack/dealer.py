@@ -14,3 +14,16 @@ class Dealer():
         for _,b in self.hand:
             score += self.deck_value[b]
         return score
+
+    def print_first_hand(self):
+        # print out the first card and leave the second card blank
+        print("* Dealers Cards *")
+        print("* First card not shown *")
+        print("* " + self.hand[1][1] + " of " + self.hand[1][0] + " *")
+        
+    def print_hand(self):
+        print("* Dealers Cards *")
+        for suit, face in self.hand:
+            print(f"*  {face}  of  {suit}  *")
+            #print(f"*  {face}  of  {suit}  *", end=" ")
+        print()
