@@ -19,7 +19,7 @@ class Dealer():
         # print out the first card and leave the second card blank
         print("* Dealers Cards *")
         print("* First card not shown *")
-        print("* " + self.hand[1][1] + " of " + self.hand[1][0] + " *")
+        print("* " + self.hand[1][1] + " of " + self.hand[1][0] + " *" + "\n")
         
     def print_hand(self):
         print("* Dealers Cards *")

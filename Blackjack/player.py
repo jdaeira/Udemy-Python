@@ -4,6 +4,7 @@ from deck import Deck
 class Player():
     
     def __init__(self):
+        self.name = ""
         self.hand = []
         self.hand_score = 0
         self.deck_value = {"Two": 2, "Three": 3, "Four": 4, "Five": 5, "Six": 6, "Seven": 7, "Eight": 8, \
@@ -16,8 +17,7 @@ class Player():
         return score
 
     def print_hand(self):
-        print("* Players Cards *")
+        print(f"* {self.name}'s Cards *")
         for suit, face in self.hand:
             print(f"*  {face}  of  {suit}  *")
-            #print(f"*  {face}  of  {suit}  *", end=" ")
         print()
