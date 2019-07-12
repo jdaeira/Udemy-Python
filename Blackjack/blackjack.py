@@ -36,9 +36,15 @@ player1.print_hand()
 print("Your score is: {}\n".format(player1.get_score()))
 
 # Prints Dealers first hand with 1st card not shown
+# Checks if the Dealer and Plater PUSH(tie)
 # Then checks if the Dealers wins BlackJack
 dealer1.print_first_hand()
-if dealer1.get_score() == 21:
+if dealer1.get_score() == 21 & player1.get_score() == 21:
+    print("PUSH")
+    dealer1.print_first_hand()
+elif player1.get_score() == 21:
+    print("Player Wins\n")
+elif dealer1.get_score() == 21:
     print("The House Wins!\n")
     dealer1.print_hand()
 
@@ -52,13 +58,24 @@ while move != "s":
         player1.print_hand()
         print("Your score is: {}\n".format(player1.get_score()))
         if player1.get_score() > 21:
-                print("You Busted!\n")
-                break
+            print("You Busted!\n")
+            break
+                
+while dealer1.get_score() < 17:
+    dealer1.print_hand()
+    dealer1.hand = cards.get_cards(1, dealer1.hand)
+    dealer1.print_hand()
+    print("Dealer score is: {}\n".format(dealer1.get_score()))  
 
-dealer1.print_hand()
-print("Dealer score is: {}\n".format(dealer1.get_score()))
 
+if dealer1.get_score() > 21:
+    print("Dealer Busted\n")
+elif dealer1.get_score() >= 17 & dealer1.get_score() == player1.get_score():
+    print("PUSH\n")
+elif dealer1.get_score() >= 17 & dealer1.get_score() > player1.get_score():
+    print("Dealer Wins!")
+elif dealer1.get_score() >= 17 & dealer1.get_score() < player1.get_score():
+    print("Player Wins!")
 
-
-
-
+#dealer1.print_hand()
+#print("Dealer score is: {}\n".format(dealer1.get_score()))
