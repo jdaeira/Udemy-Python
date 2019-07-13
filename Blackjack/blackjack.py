@@ -3,22 +3,107 @@ from deck import Deck
 from player import Player
 from dealer import Dealer
 
-# This is the move variable that will keep tracl of Stand or Hit
-move = ""
-play = True 
-
 # Function to Deal the initial cards to the Player and Dealer
-def initial_deal(player, dealer, deck):
-    player.hand = deck.get_cards(1, player.hand)
-    dealer.hand = deck.get_cards(1, dealer.hand)
-    player.hand = deck.get_cards(1, player.hand)
-    dealer.hand = deck.get_cards(1, dealer.hand)
+def initial_deal(player, dealer, card):
+    player.hand = card.get_cards(1, player.hand)
+    dealer.hand = card.get_cards(1, dealer.hand)
+    player.hand = card.get_cards(1, player.hand)
+    dealer.hand = card.get_cards(1, dealer.hand)
 
+# Function that check if a player want to continue playing
+def play_again():
+    print()
+    answer = input("Do you want to play again y/n? ")
+    if answer == "y":
+        player1.hand = []
+        dealer1.hand = []
+        play_blackjack()
+    else:
+        print("Thank you for playing!")
+        exit()
 
+# Function that Starts or continues the game
+def play_blackjack():
+    move = ""
 
-# Initialize the deck and shuffle the cards
-cards = Deck()
-cards.shuffle_cards()
+    # Initialize the deck and shuffle the cards
+    cards = Deck()
+    cards.shuffle_cards()
+
+    # Calls the function to deal the initial cards to the Player and Dealer
+    initial_deal(player1, dealer1, cards)
+
+    # Prints out the Players hand and score
+    player1.print_hand()
+    print("Your score is: {}\n".format(player1.get_score()))
+
+    # This is temporary till I figure out how to deal with the Aces
+    if player1.get_score() > 21:
+        print("Player Busted!")
+        play_again()
+
+    # Prints Dealers first hand with 1st card not shown
+    # Checks if the Dealer and Player PUSH(tie)
+    # Checks if the Player wins Blackjack
+    # Then checks if the Dealers wins BlackJack
+    dealer1.print_first_hand()
+    if dealer1.get_score() == 21 and player1.get_score() == 21:
+        print("PUSH")
+        dealer1.print_hand()
+        play_again()
+    elif player1.get_score() == 21:
+        dealer1.print_hand()
+        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print("Blackjack! Player Wins!\n")
+        play_again()
+    elif dealer1.get_score() == 21:
+        dealer1.print_hand()
+        print("The House Wins!\n")
+        play_again()
+        
+    # Asks the Player if they want to Stand or Hit. Will exit out if Stand is chosen
+    # Checks if player goes over 21. If so then Busted message shown and breaks out of the function
+    while move != "s":    
+        move = input("Do you want to Stand(s) or Hit(h)? ")
+        
+        if move == "h":
+            player1.hand = cards.get_cards(1, player1.hand)
+            player1.print_hand()
+            print("Your score is: {}\n".format(player1.get_score()))
+            if player1.get_score() > 21:
+                print("You Busted!\n")
+                dealer1.print_hand()
+                print("Dealer Wins!\n")
+                play_again()   
+
+    # Will get a card card from the dealer till the score is 17 or more
+    dealer1.print_hand()
+    while dealer1.get_score() < 17:
+        dealer1.hand = cards.get_cards(1, dealer1.hand)
+        dealer1.print_hand()
+        #print("Dealer score is: {}\n".format(dealer1.get_score()))  
+
+    # Check to see if the Dealer busted
+    if dealer1.get_score() > 21:
+        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print("Dealer Busted\n")
+        play_again()
+    # Checks to see if the Final result is a Tie
+    elif dealer1.get_score() <= 21 and dealer1.get_score() == player1.get_score():
+        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print("PUSH\n")
+        play_again()
+    # Checks to see if the Dealer Wins the game
+    elif dealer1.get_score() <= 21 and dealer1.get_score() > player1.get_score():
+        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print("Dealer Wins!")
+        play_again()
+    # Checks to see if the Player Wins the game
+    elif dealer1.get_score() <= 21 and dealer1.get_score() < player1.get_score():
+        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print("Player Wins!")
+        play_again()
+
 
 # Prints the Welcome Message
 print()
@@ -31,67 +116,11 @@ player1 = Player()
 player1.name = player_name
 dealer1 = Dealer()
 
-# Calls the function to deal the initial cards to the Player and Dealer
-initial_deal(player1, dealer1, cards)
+# Starts the game
+play_blackjack()
 
-# Prints out the Players hand and score
-player1.print_hand()
-print("Your score is: {}\n".format(player1.get_score()))
 
-# This is temporary till I figure out how to deal with the Aces
-if player1.get_score() > 21:
-    print("Player Busted!")
-    exit()
-
-# Prints Dealers first hand with 1st card not shown
-# Checks if the Dealer and Player PUSH(tie)
-# Checks if the Player wins Blackjack
-# Then checks if the Dealers wins BlackJack
-dealer1.print_first_hand()
-if dealer1.get_score() == 21 and player1.get_score() == 21:
-    print("PUSH")
-    dealer1.print_hand()
-elif player1.get_score() == 21:
-    print("Blackjack! Player Wins!\n")
-elif dealer1.get_score() == 21:
-    print("The House Wins!\n")
-    dealer1.print_hand()
-
-# Asks the Player if they want to Stand or Hit. Will exit out if Stand is chosen
-# Checks if player goes over 21. If so then Busted message shown and breaks out of the function
-while move != "s":    
-    move = input("Do you want to Stand(s) or Hit(h)? ")
-    
-    if move == "h":
-        player1.hand = cards.get_cards(1, player1.hand)
-        player1.print_hand()
-        print("Your score is: {}\n".format(player1.get_score()))
-        if player1.get_score() > 21:
-            print("You Busted!\n")
-            print("Dealer Wins!\n")
-            exit()    
-
-# Will get a card card from the dealer till the score is 17 or more
-dealer1.print_hand()
-while dealer1.get_score() < 17:
-    dealer1.hand = cards.get_cards(1, dealer1.hand)
-    dealer1.print_hand()
-    print("Dealer score is: {}\n".format(dealer1.get_score()))  
-
-# Check to see if the Dealer busted
-if dealer1.get_score() > 21:
-    print("Dealer Busted\n")
-# Checks to see if the Final result is a Tie
-elif dealer1.get_score() <= 21 and dealer1.get_score() == player1.get_score():
-    print("PUSH\n")
-# Checks to see if the Dealer Wins the game
-elif dealer1.get_score() <= 21 and dealer1.get_score() > player1.get_score():
-    print("Dealer Wins!")
-# Checks to see if the Player Wins the game
-elif dealer1.get_score() <= 21 and dealer1.get_score() < player1.get_score():
-    dealer1.print_hand()
-    print(dealer1.get_score())
-    print("Player Wins!")
-
-#dealer1.print_hand()
-#print("Dealer score is: {}\n".format(dealer1.get_score()))
+# Things to finish
+# 1) Place a bet on the game
+# 2) Keep track of players money
+# 3) Check for Aces and if the there is an Ace and Score is over 21 than subtract 10 from score

@@ -25,5 +25,4 @@ class Dealer():
         print("* Dealers Cards *")
         for suit, face in self.hand:
             print(f"*  {face}  of  {suit}  *")
-            #print(f"*  {face}  of  {suit}  *", end=" ")
         print()
