@@ -30,6 +30,11 @@ def play_blackjack():
     cards = Deck()
     cards.shuffle_cards()
 
+    # Ask how much to bet in the game
+    print(f"You have ${player1.money} to bet!\n")
+    bet = input("How much is your bet? ")
+    player1.bet = int(bet)
+
 
     # Calls the function to deal the initial cards to the Player and Dealer
     initial_deal(player1, dealer1, cards)
@@ -56,10 +61,12 @@ def play_blackjack():
         dealer1.print_hand()
         print("Dealer score is: {}\n".format(dealer1.get_score())) 
         print("Blackjack! Player Wins!\n")
+        player1.win_bet()
         play_again()
     elif dealer1.get_score() == 21:
         dealer1.print_hand()
         print("The House Wins!\n")
+        player1.lost_bet()
         play_again()
         
     # Asks the Player if they want to Stand or Hit. Will exit out if Stand is chosen
@@ -75,6 +82,7 @@ def play_blackjack():
                 print("You Busted!\n")
                 dealer1.print_hand()
                 print("Dealer Wins!\n")
+                player1.lost_bet()
                 play_again()   
     
 
@@ -89,6 +97,7 @@ def play_blackjack():
     if dealer1.get_score() > 21:
         print("Dealer score is: {}\n".format(dealer1.get_score())) 
         print("Dealer Busted\n")
+        player1.win_bet()
         play_again()
     # Checks to see if the Final result is a Tie
     elif dealer1.get_score() <= 21 and dealer1.get_score() == player1.get_score():
@@ -99,11 +108,13 @@ def play_blackjack():
     elif dealer1.get_score() <= 21 and dealer1.get_score() > player1.get_score():
         print("Dealer score is: {}\n".format(dealer1.get_score())) 
         print("Dealer Wins!")
+        player1.lost_bet()
         play_again()
     # Checks to see if the Player Wins the game
     elif dealer1.get_score() <= 21 and dealer1.get_score() < player1.get_score():
         print("Dealer score is: {}\n".format(dealer1.get_score())) 
         print("Player Wins!")
+        player1.win_bet()
         play_again()
 
 
@@ -118,6 +129,10 @@ print("Good luck " + player_name + "\n")
 player1 = Player()
 player1.name = player_name
 dealer1 = Dealer()
+
+# Get the initial amount to bet
+initial_bet = input("How much money do you want to put in the pot? ")
+player1.money = int(initial_bet)
 
 # Starts the game
 play_blackjack()

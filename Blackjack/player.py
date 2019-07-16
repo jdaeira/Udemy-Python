@@ -26,14 +26,14 @@ class Player():
             print(f"*  {face}  of  {suit}  *")
         print()
     
-    # Find out the bet amount 
-    def bet_amount(self, bet_table):
-        self.bet = bet_table
-
     # Call if the player wins the bet
-    def win_bet(self, bet_table):
-        self.money += bet_table
+    def win_bet(self):
+        self.money += self.bet
     
     # Call if the player loses the bet
-    def lose_bet(self, bet_table):
-        self.money -= bet_table
+    def lost_bet(self):
+        self.money -= self.bet
+
+    # Check if there is enough money to bet
+    def check_money(self):
+        pass
