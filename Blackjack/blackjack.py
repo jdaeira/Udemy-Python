@@ -30,6 +30,7 @@ def play_blackjack():
     cards = Deck()
     cards.shuffle_cards()
 
+
     # Calls the function to deal the initial cards to the Player and Dealer
     initial_deal(player1, dealer1, cards)
 
@@ -75,6 +76,7 @@ def play_blackjack():
                 dealer1.print_hand()
                 print("Dealer Wins!\n")
                 play_again()   
+    
 
     # Will get a card card from the dealer till the score is 17 or more
     dealer1.print_hand()
@@ -111,7 +113,8 @@ print("*****  Welcome to Cascais Casino  *****")
 player_name = input("What is your name? ")
 print("Good luck " + player_name + "\n")
 
-# Initializes the Player and Dealer and names the Player
+
+# Main Application Initializes the Player and Dealer and names the Player
 player1 = Player()
 player1.name = player_name
 dealer1 = Dealer()
