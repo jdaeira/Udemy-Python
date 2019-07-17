@@ -7,6 +7,7 @@ class Player():
         self.name = ""
         self.hand = []
         self.money = 0
+        self.initial_bet = 0
         self.bet = 0
         self.hand_score = 0
         self.deck_value = {"Two": 2, "Three": 3, "Four": 4, "Five": 5, "Six": 6, "Seven": 7, "Eight": 8, \

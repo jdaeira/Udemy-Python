@@ -19,7 +19,13 @@ def play_again():
         dealer1.hand = []
         play_blackjack()
     else:
+        print()
         print("Thank you for playing!")
+        check_winnings = player1.money - player1.initial_bet
+        if player1.money > player1.initial_bet:
+            print(f"Congratulations! You won ${check_winnings}!")
+        else:
+            print(f"You lost ${abs(check_winnings)}. Better luck next time.\n")
         exit()
 
 # Function that Starts or continues the game
@@ -131,14 +137,16 @@ player1.name = player_name
 dealer1 = Dealer()
 
 # Get the initial amount to bet
-initial_bet = input("How much money do you want to put in the pot? ")
-player1.money = int(initial_bet)
+starting_bet = input("How much money do you want to put in the pot? ")
+player1.money = int(starting_bet)
+player1.initial_bet = int(starting_bet)
 
 # Starts the game
 play_blackjack()
 
 
 # Things to finish
-# 1) Place a bet on the game
-# 2) Keep track of players money
-# 3) Check for Aces and if the there is an Ace and Score is over 21 than subtract 10 from score
+# 1) Check if there is enough money to bet 
+# 2) Check for Aces and if the there is an 
+# Ace and Score is over 21 than subtract 10 from score
+# 3) Only shuffle cards if there are less than 10 cards left
