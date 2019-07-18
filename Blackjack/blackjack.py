@@ -4,15 +4,20 @@ from player import Player
 from dealer import Dealer
 
 # Function to Deal the initial cards to the Player and Dealer
-def initial_deal(player, dealer, card):
-    player.hand = card.get_cards(1, player.hand)
-    dealer.hand = card.get_cards(1, dealer.hand)
-    player.hand = card.get_cards(1, player.hand)
-    dealer.hand = card.get_cards(1, dealer.hand)
+def initial_deal(card):
+    player1.hand = card.get_cards(1, player1.hand)
+    dealer1.hand = card.get_cards(1, dealer1.hand)
+    player1.hand = card.get_cards(1, player1.hand)
+    dealer1.hand = card.get_cards(1, dealer1.hand)
 
 # Function that check if a player want to continue playing
+# Also checks in the beginning if the player has money to bet
+# If no money left there is a message and the game quits
 def play_again():
     print()
+    if player1.money == 0:
+            print(f"You have no money left. You lost ${player1.initial_bet}. Better luck next time.\n")
+            exit()    
     answer = input("Do you want to play again y/n? ")
     if answer == "y":
         player1.hand = []
@@ -31,19 +36,26 @@ def play_again():
 # Function that Starts or continues the game
 def play_blackjack():
     move = ""
+    bet_money = False
 
     # Initialize the deck and shuffle the cards
     cards = Deck()
     cards.shuffle_cards()
-
+    
     # Ask how much to bet in the game
-    print(f"You have ${player1.money} to bet!\n")
-    bet = input("How much is your bet? ")
-    player1.bet = int(bet)
+    # Also checks to see if player bet more than he has in the pot
+    while bet_money == False:        
+        print(f"You have ${player1.money} to bet!\n")
+        bet = input("How much is your bet? ")
+        player1.bet = int(bet)
+        if player1.bet > player1.money:
+            print("You don't have that much money to bet. Try Again!")
+        else:
+            bet_money = True
 
 
     # Calls the function to deal the initial cards to the Player and Dealer
-    initial_deal(player1, dealer1, cards)
+    initial_deal(cards)
 
     # Prints out the Players hand and score
     player1.print_hand()
@@ -124,6 +136,8 @@ def play_blackjack():
         play_again()
 
 
+
+### Main Function Starts Here
 # Prints the Welcome Message
 print()
 print("*****  Welcome to Cascais Casino  *****")
@@ -146,7 +160,6 @@ play_blackjack()
 
 
 # Things to finish
-# 1) Check if there is enough money to bet 
-# 2) Check for Aces and if the there is an 
+# 1) Check for Aces and if the there is an 
 # Ace and Score is over 21 than subtract 10 from score
-# 3) Only shuffle cards if there are less than 10 cards left
+# 2) Only shuffle cards if there are less than 10 cards left

@@ -14,10 +14,14 @@ class Player():
                            "Nine": 9, "Ten": 10, "Jack": 10, "Queen": 10, "King": 10, "Ace": 11}
     
     # Get the score of the player
+    # Checks for value of an Ace and adds only 1 if score > 21
     def get_score(self):
         score = 0
         for _,b in self.hand:
-            score += self.deck_value[b]
+            if self.deck_value[b] == 11 and (score + 11) > 21:
+                score += 1
+            else:                
+                score += self.deck_value[b]
         return score
 
     # Prints the hand of the player
@@ -35,6 +39,4 @@ class Player():
     def lost_bet(self):
         self.money -= self.bet
 
-    # Check if there is enough money to bet
-    def check_money(self):
-        pass
+ 
