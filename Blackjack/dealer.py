@@ -1,6 +1,9 @@
 
 from deck import Deck
 
+TGREEN =  '\033[32m' # Green Text
+TWHITE = '\033[37m'  # White Text
+
 class Dealer():
     
     def __init__(self):
@@ -28,13 +31,13 @@ class Dealer():
     # Prints the dealers first hand of cards
     def print_first_hand(self):
         # print out the first card and leave the second card blank
-        print("* Dealers Cards *")
-        print("* First card not shown *")
-        print("* " + self.hand[1][1] + " of " + self.hand[1][0] + " *" + "\n")
+        print(TGREEN + "* Dealers Cards *")
+        print(TGREEN + "* First card not shown *")
+        print(TGREEN + "* " + self.hand[1][1] + " of " + self.hand[1][0] + " *" + "\n", TWHITE)
         
     # Prints out the all the cards in the dealers hand of cards    
     def print_hand(self):
-        print("* Dealers Cards *")
+        print(TGREEN + "* Dealers Cards *")
         for suit, face in self.hand:
-            print(f"*  {face}  of  {suit}  *")
+            print(TGREEN, f"*  {face}  of  {suit}  *", TWHITE)
         print()
