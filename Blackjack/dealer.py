@@ -14,12 +14,17 @@ class Dealer():
     def get_score(self):
         score = 0
         for _,b in self.hand:
-            if self.deck_value[b] == 11 and (score + 11) > 21:
-                score += 1
-            else:                
-                score += self.deck_value[b]
-        return score
+            score += self.deck_value[b]
+        return self.adjust_aces(score)
 
+    # Adjusts the score accordingly to aces in the deck
+    # Will adjust Ace value as 11 or 1 accordingly
+    def adjust_aces(self, hand_score):
+        for _,b in self.hand:
+            if hand_score > 21 and self.deck_value[b] == 11:
+                hand_score -= 10
+        return hand_score
+    
     # Prints the dealers first hand of cards
     def print_first_hand(self):
         # print out the first card and leave the second card blank

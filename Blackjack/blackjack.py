@@ -160,6 +160,4 @@ play_blackjack()
 
 
 # Things to finish
-# 1) Check for Aces and if the there is an 
-# Ace and Score is over 21 than subtract 10 from score
-# 2) Only shuffle cards if there are less than 10 cards left
+# 1) Only shuffle cards if there are less than 10 cards left
