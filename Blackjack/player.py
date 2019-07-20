@@ -20,7 +20,6 @@ class Player():
         score = 0
         for _,b in self.hand:
             score += self.deck_value[b]
-        #score = self.adjust_aces(score)
         return self.adjust_aces(score)
 
     # Adjusts the score accordingly to aces in the deck

@@ -3,6 +3,9 @@ from deck import Deck
 from player import Player
 from dealer import Dealer
 
+TGREEN =  '\033[32m' # Green Text
+TWHITE = '\033[37m'  # White Text
+
 # Function to Deal the initial cards to the Player and Dealer
 def initial_deal(card):
     player1.hand = card.get_cards(1, player1.hand)
@@ -28,7 +31,7 @@ def play_again():
         print("Thank you for playing!")
         check_winnings = player1.money - player1.initial_bet
         if player1.money > player1.initial_bet:
-            print(f"Congratulations! You won ${check_winnings}!")
+            print(f"Congratulations! You won ${check_winnings}!\n")
         else:
             print(f"You lost ${abs(check_winnings)}. Better luck next time.\n")
         exit()
@@ -61,11 +64,6 @@ def play_blackjack():
     player1.print_hand()
     print("Your score is: {}\n".format(player1.get_score()))
 
-    # This is temporary till I figure out how to deal with the Aces
-    if player1.get_score() > 21:
-        print("Player Busted!")
-        play_again()
-
     # Prints Dealers first hand with 1st card not shown
     # Checks if the Dealer and Player PUSH(tie)
     # Checks if the Player wins Blackjack
@@ -83,7 +81,7 @@ def play_blackjack():
         play_again()
     elif dealer1.get_score() == 21:
         dealer1.print_hand()
-        print("The House Wins!\n")
+        print(TGREEN + "Blackjack! The House Wins!\n", TWHITE)
         player1.lost_bet()
         play_again()
         
@@ -91,6 +89,7 @@ def play_blackjack():
     # Checks if player goes over 21. If so then Busted message shown and breaks out of the function
     while move != "s":    
         move = input("Do you want to Stand(s) or Hit(h)? ")
+        print()
         
         if move == "h":
             player1.hand = cards.get_cards(1, player1.hand)
@@ -99,7 +98,7 @@ def play_blackjack():
             if player1.get_score() > 21:
                 print("You Busted!\n")
                 dealer1.print_hand()
-                print("Dealer Wins!\n")
+                print(TGREEN + "Dealer Wins!\n", TWHITE)
                 player1.lost_bet()
                 play_again()   
     
@@ -113,24 +112,24 @@ def play_blackjack():
 
     # Check to see if the Dealer busted
     if dealer1.get_score() > 21:
-        print("Dealer score is: {}\n".format(dealer1.get_score())) 
-        print("Dealer Busted\n")
+        print(TGREEN + f"Dealer score is: {dealer1.get_score()}\n", TWHITE) 
+        print(TGREEN + "Dealer Busted\n", TWHITE)
         player1.win_bet()
         play_again()
     # Checks to see if the Final result is a Tie
     elif dealer1.get_score() <= 21 and dealer1.get_score() == player1.get_score():
-        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print(TGREEN + f"Dealer score is: {dealer1.get_score()}\n", TWHITE) 
         print("PUSH\n")
         play_again()
     # Checks to see if the Dealer Wins the game
     elif dealer1.get_score() <= 21 and dealer1.get_score() > player1.get_score():
-        print("Dealer score is: {}\n".format(dealer1.get_score())) 
-        print("Dealer Wins!")
+        print(TGREEN + f"Dealer score is: {dealer1.get_score()}\n", TWHITE) 
+        print(TGREEN + "Dealer Wins!", TWHITE)
         player1.lost_bet()
         play_again()
     # Checks to see if the Player Wins the game
     elif dealer1.get_score() <= 21 and dealer1.get_score() < player1.get_score():
-        print("Dealer score is: {}\n".format(dealer1.get_score())) 
+        print(TGREEN + f"Dealer score is: {dealer1.get_score()}\n", TWHITE) 
         print("Player Wins!")
         player1.win_bet()
         play_again()
