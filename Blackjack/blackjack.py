@@ -41,10 +41,11 @@ def play_blackjack():
     move = ""
     bet_money = False
 
-    # Initialize the deck and shuffle the cards
-    cards = Deck()
-    cards.shuffle_cards()
-    
+    # Shuffle a new Deck if the count of cards is less than 10
+    if len(cards.cardslist) < 11:
+        cards.cardslist = []
+        cards.shuffle_cards()
+        
     # Ask how much to bet in the game
     # Also checks to see if player bet more than he has in the pot
     while bet_money == False:        
@@ -154,9 +155,14 @@ starting_bet = input("How much money do you want to put in the pot? ")
 player1.money = int(starting_bet)
 player1.initial_bet = int(starting_bet)
 
+# Initialize the deck and shuffle the cards
+cards = Deck()
+cards.shuffle_cards()
+
 # Starts the game
 play_blackjack()
 
 
-# Things to finish
-# 1) Only shuffle cards if there are less than 10 cards left
+# Things to add later on
+# 1) Add Doule Down and Card Splits
+# 2) Try adding Multiple Players 
