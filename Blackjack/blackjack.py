@@ -3,15 +3,15 @@ from deck import Deck
 from player import Player
 from dealer import Dealer
 
-TGREEN =  '\033[32m' # Green Text
-TWHITE = '\033[37m'  # White Text
+TGREEN = '\033[32m' # Green Text
+TWHITE = '\033[37m' # White Text
 
 # Function to Deal the initial cards to the Player and Dealer
-def initial_deal(card):
-    player1.hand = card.get_cards(1, player1.hand)
-    dealer1.hand = card.get_cards(1, dealer1.hand)
-    player1.hand = card.get_cards(1, player1.hand)
-    dealer1.hand = card.get_cards(1, dealer1.hand)
+def initial_deal():
+    player1.hand = cards.get_cards(1, player1.hand)
+    dealer1.hand = cards.get_cards(1, dealer1.hand)
+    player1.hand = cards.get_cards(1, player1.hand)
+    dealer1.hand = cards.get_cards(1, dealer1.hand)
 
 # Function that check if a player want to continue playing
 # Also checks in the beginning if the player has money to bet
@@ -59,7 +59,7 @@ def play_blackjack():
 
 
     # Calls the function to deal the initial cards to the Player and Dealer
-    initial_deal(cards)
+    initial_deal()
 
     # Prints out the Players hand and score
     player1.print_hand()
@@ -164,5 +164,6 @@ play_blackjack()
 
 
 # Things to add later on
-# 1) Add Doule Down and Card Splits
-# 2) Try adding Multiple Players 
+# 1) Add Doule Down
+# 2) Add Card Splits
+# 3) Try adding Multiple Players 
