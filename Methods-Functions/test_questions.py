@@ -1,4 +1,4 @@
-Function Practice Exercises
+# Function Practice Exercises
 
 Problems are arranged in increasing difficulty:
 
