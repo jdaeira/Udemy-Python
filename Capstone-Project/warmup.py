@@ -108,3 +108,9 @@ def number_words(sentence):
 
 number_words("This is not a test!")
 
+
+def number_words_file(wordfile):
+    with open(wordfile, mode = 'r') as file:
+        print(f"There are {len(file.read().split())} words in the sentence!")
+
+number_words_file("words.txt")
