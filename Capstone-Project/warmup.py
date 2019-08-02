@@ -30,8 +30,32 @@ print(reverse_word(reverse))
 # to the end of the word and an ay is affixed (Ex.: "banana" would yield anana-bay). 
 # Read Wikipedia for more information on rules.
 
-def pig_latin(sentence):
-    pass
+def pig_latin(phrase):
+    new_phrase = phrase.split()
+    consonant = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+    vowel = ["a", "e", "i", "o", "u"]
+    for num in range(0, len(new_phrase)):
+        # Look for consonant clusters
+        if new_phrase[num][0].lower() in consonant and new_phrase[num][1].lower() in consonant:
+            front = ""
+            for letter in range(0, len(new_phrase[num])):
+                if new_phrase[num][letter].lower() in consonant:
+                    front += new_phrase[num][letter]
+                    cluster_word = new_phrase[num][len(front):]
+                elif new_phrase[num][letter].lower() in vowel:
+                    break
+            new_phrase[num] = cluster_word + "-" + front + "ay"
+        # Looks to find if the first letter is a consonant
+        elif new_phrase[num][0].lower() in consonant:
+            word = new_phrase[num][1:] 
+            new_phrase[num] = word + "-" + new_phrase[num][0] + "ay"   
+        # Looks to find if the first letter is a vowel         
+        elif new_phrase[num][0].lower() in vowel:
+            new_phrase[num] = new_phrase[num] + "-" + "ay"
+    print("Pig Latin Translation is:")
+    print(" ".join(new_phrase))
+
+pig_latin("This is a test to find consonant clusters")
 
 
 # Count Vowels - Enter a string and the program counts the number of vowels in the text. 
@@ -104,13 +128,14 @@ palindrome("racecar")
 
 def number_words(sentence):
     word_count = sentence.split()
-    print(f"There are {len(word_count)} words in the sentence!")
+    print(f"There are {len(word_count)} words in the sentence!\n -> {sentence}")
 
 number_words("This is not a test!")
 
 
 def number_words_file(wordfile):
     with open(wordfile, mode = 'r') as file:
-        print(f"There are {len(file.read().split())} words in the sentence!")
+        sentence = file.read()
+        print(f"There are {len(sentence.split())} words in the sentence!\n -> {sentence}")
 
 number_words_file("words.txt")
