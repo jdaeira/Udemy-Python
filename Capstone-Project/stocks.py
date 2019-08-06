@@ -3,7 +3,7 @@ from yahoo_fin.stock_info import *
 
 apple = get_live_price('AAPL')
 print(apple)
-print(get_quote_table('AAPL'))
+print(get_quote_table('AAPL')['Open'])
 
 print(get_day_gainers())
 
@@ -19,3 +19,6 @@ print(get_stats('AAPL'))
 print(get_data('AAPL'))
 
 # try yahoofinancials as well
+
+
+ 
