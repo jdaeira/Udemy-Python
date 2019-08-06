@@ -1,16 +1,19 @@
 
 import csv
 
-with open('stock_tickers.csv') as csvfile:
+with open('markets.csv') as csvfile:
     reader = csv.DictReader(csvfile)
 
     count = 0
 
     for row in reader:
-        #print(row['Ticker'] + " - " +  row['Name'])
+        # print(row)
 
-        if row['Ticker'] == "ORCL":
+        if row['Symbol'] == "ORCL":
             print(row['Name'])
+
+        if "Microsoft" in row['Name']:
+            print(row['Name'] + " - " + row['Symbol'])
 
         # if count > 1000:
         #     break
