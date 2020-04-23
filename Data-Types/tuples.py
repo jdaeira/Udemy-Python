@@ -9,3 +9,4 @@ print(type(mylist))
 
 print(t.count(2))
 print(t.index(2))
+
